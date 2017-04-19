@@ -1,0 +1,25 @@
+{% extends "appointments/base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>Here are all appointments: </h2>
+    <table class="table table-bordered table-striped">
+      {% for appointment in object_list %}
+        <tr>
+          <td>{{ appointment.title }}</td>
+          <td>{{ appointment.description}}</td>
+          <td><a class="btn btn-info btn-sm"
+            href="{% url 'appointment_detail' appointment.pk %}">Details</a></td>
+          <td><a class="btn btn-info btn-sm"
+            href="{% url 'edit_appointment' appointment.pk %}">Edit</a></td>
+          <td><a class="btn btn-danger btn-sm"
+            href="{% url 'delete_appointment' appointment.pk %}">Delete</a></td>
+        </tr>
+      {% empty %}
+      <p>No appointments yet.</p>
+      {% endfor %}
+    </table>
+    <a class="btn btn-success btn-lg" href="{% url 'add_appointment' %}"
+      role="button">Add Appointment</a>
+  </div>
+{% endblock %}

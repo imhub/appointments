@@ -1,0 +1,11 @@
+{% extends "appointments/base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="container">
+  <h1>Delete {{ object.title }}</h1>
+  <form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" class="btn btn-danger btn-lg" value="Confirm" />
+  </form>
+</div>
+{% endblock content %}

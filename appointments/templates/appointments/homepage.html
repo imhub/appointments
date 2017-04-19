@@ -1,0 +1,23 @@
+{% extends "appointments/base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    {% if user.is_authenticated %}
+      <h3>Hello, {{ user.username }}!</h3>
+      <hr>
+      <a class="btn btn-primary btn-lg" href="{% url 'appointments' %}"
+        role="button">View Appointments</a>
+      <a class="btn btn-success btn-lg" href="{% url 'add_appointment' %}"
+        role="button">Add Appointment</a>
+    {% else %}
+    <h1>This is a simple Appointments Management web application</h1>
+    <p>Please sign in if you are registered user. Otherwise, you can apply
+      for an appointment if you have the direct link.</p>
+
+    {% endif %}
+
+  </div>
+</div>
+{% endblock content %}

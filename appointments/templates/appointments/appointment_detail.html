@@ -1,0 +1,32 @@
+{% extends "appointments/base.html" %}
+{% load static from staticfiles %}
+{% block title %}Appointment {{ app }}{% endblock title %}
+{% block content %}
+<div class="container">
+  <h1>Appointment {{ app }}</h1>
+  <h2>{{ applications.as_ul }}</h2>
+  <form action="" method="post">{% csrf_token %}
+    <div class="form-group">
+      {% for date in dates %}
+        <input type="radio" name="date" value="{{ date }}"> {{ date }}<br>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      <label for="full_name">Full Name</label>
+      <input type="text" value="{{ application.name }}" name="name" id="name" placeholder="Full Name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" value="{{ application.email }}" name="email" id="email" placeholder="Email">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+
+  <!-- <form action="">
+    {% for d in object.dates.all %}
+    <input type="radio" name="date" value="{{ d.app_date }}"> {{ d.app_date }}<br>
+
+    {% endfor %}
+  </form> -->
+</div>
+{% endblock content %}
